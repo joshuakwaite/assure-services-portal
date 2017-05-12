@@ -1,3 +1,66 @@
-<p>
-  signup works!
-</p>
+<div class="authPages">
+  <div class="text-center">
+    <h1>Assure Portal Signup</h1>
+  </div>
+
+  <p class="signup text-center" style="padding-bottom: 10px;">Use the form below to create your free Assure Services account:</p>
+
+  <form name="signupForm">
+    <div class="form-group">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <div class="labels">First Name:</div>
+            <input class="form-control" name="firstName" ng-model="user.firstName" required>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <div class="labels">Last Name:</div>
+            <input class="form-control" name="lastName" ng-model="user.lastName" required>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <div class="labels">Phone Number:</div>
+            <input class="form-control" ng-model="user.phoneNumber">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <div class="labels">Email Address:</div>
+            <input class="form-control" name="email" ng-model="user.email" type="email" required>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <div class="labels">Password:</div>
+            <input class="form-control" name="password" type="password" id="password" ng-model="user.password" ng-minlength="6">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <div class="labels">Repeat Password:</div>
+            <input type="password" id="passwordRepeat" class="form-control" ng-model="passwordRepeat">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <span class="text-danger" ng-show="passwordMessage">{{passwordMessage}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <button ng-click='signup(user)' class='btn btn-primary'>Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

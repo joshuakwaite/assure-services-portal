@@ -22,7 +22,7 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'my-account', component: MyAccountComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  // { path: '**', component: `PageNotFoundComponent` }
+  { path: '*/path', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({
