@@ -5,20 +5,19 @@
 
   <p class="signup text-center" style="padding-bottom: 10px;">Use the form below to login to your Assure Services account:</p>
 
-  <form name="signupForm">
+  <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
     <div class="form-group">
-      <div class="container">
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
             <div class="labels">Email Address:</div>
-            <input class="form-control" name="email" ng-model="user.email" type="email" required>
+            <input class="form-control" name="email" type="email" id="email" ngModel required>
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
             <div class="labels">Password:</div>
-            <input class="form-control" name="password" type="password" id="password" ng-model="user.password" ng-minlength="6">
+            <input class="form-control" name="password" type="password" id="password" ngModel required>
           </div>
         </div>
         <br>
@@ -28,12 +27,18 @@
             <span class="text-danger" ng-show="passwordMessage">{{passwordMessage}}</span>
           </div>
         </div>
-      </div>
     </div>
     <div class="row">
       <div class="col-xs-12 text-center">
-        <button ng-click='login(user)' class='btn btn-primary'>Login</button>
+        <button type="submit" class='btn btn-primary'>Login</button>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <button type="button" (click)='doStuff()' class='btn btn-primary'>Login</button>
+      </div>
+    </div>
+
   </form>
 </div>

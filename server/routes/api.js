@@ -6,7 +6,7 @@ const Test = require("../models/test");
 
 testRoute.route("/")
   .get(function (req, res) {
-    Test.find({}, function (err, test) {
+    Test.find({user: req.user._id}, function (err, test) {
       if (err) return res.status(500).send(err);
       res.send(test);
     });
@@ -15,17 +15,19 @@ testRoute.route("/")
   .post(function (req, res) {
     let test = new Test(req.body);
 
-    test.save(function (err) {
+    test.user = req.user;
+
+    test.save(function (err, newTest) {
       if (err)
         return res.status(500).send(err);
-      res.send(test);
+      res.send(newTest);
     });
 
 
   });
 
 testRoute.delete("/:id", function (req, res) {
-  Test.findOneAndRemove({_id: req.params.id},
+  Test.findOneAndRemove({_id: req.params.id, user: req.user._id},
     function (err, test) {
       if (err)
         return res.status(500).send(err);
@@ -38,15 +40,15 @@ testRoute.delete("/:id", function (req, res) {
 });
 
 testRoute.put("/:id", function (req, res) {
-  Test.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function (err, updatedTest) {
+  Test.findOneAndUpdate({_id: req.params.id, user: req.user._id}, req.body, {new: true}, function (err, updatedTest) {
     if (err)
       return res.status(500).send(err);
-    res.send(updatedAssignment)
+    res.send(updatedTest)
   });
 });
 
 testRoute.get("/:id", function (req, res) {
-  Assignment.findOne({_id: req.params.id}, function (err, test) {
+  Assignment.findOne({_id: req.params.id, user: req.user._id}, function (err, test) {
     if (err) return res.status(500).send(err);
     res.send(test);
   });

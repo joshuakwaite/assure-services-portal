@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { AuthService } from './auth.service';
+import { httpFactory } from './http.factory';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -35,15 +38,17 @@ const appRoutes: Routes = [
     FooterComponent,
     LoginComponent,
     SignupComponent,
-    MyAccountComponent
+    MyAccountComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [AuthService, {
+    provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions]}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

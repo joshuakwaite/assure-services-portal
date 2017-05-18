@@ -18,7 +18,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right" ng-controller="authController">
             <li ng-hide="isAuthenticated()"><a routerLink="/login" routerLinkActive="active">Login</a></li>
-            <li ng-show="isAuthenticated()"><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
+            <li ng-show="isAuthenticated()" class="clicky"><a (click)="logout()">Logout</a></li>
             <li ng-show="isAuthenticated()"><a routerLink="/signup" routerLinkActive="active">Signup</a></li>
             <li ng-hide="isAuthenticated()"><a routerLink="/my-account" routerLinkActive="active">Account</a></li>
           </ul>

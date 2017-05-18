@@ -5,48 +5,41 @@
 
   <p class="signup text-center" style="padding-bottom: 10px;">Use the form below to create your free Assure Services account:</p>
 
-  <form name="signupForm">
+  <form #signupForm = "ngForm" (ngSubmit)="onSignup(signupForm)">
     <div class="form-group">
       <div class="container">
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
-            <div class="labels">First Name:</div>
-            <input class="form-control" name="firstName" ng-model="user.firstName" required>
+            <label for="firstName">First Name:</label>
+            <input class="form-control" type="text" name="firstName" id="firstName" ngModel required>
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
-            <div class="labels">Last Name:</div>
-            <input class="form-control" name="lastName" ng-model="user.lastName" required>
+            <label for="lastName">Last Name:</label>
+            <input class="form-control" type="text" name="lastName" id="lastName" ngModel required>
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
-            <div class="labels">Phone Number:</div>
-            <input class="form-control" ng-model="user.phoneNumber">
+            <label for="email">Email:</label>
+            <input class="form-control" type="email" name="email" id="email" ngModel required>
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
-            <div class="labels">Email Address:</div>
-            <input class="form-control" name="email" ng-model="user.email" type="email" required>
+            <label for="password">Password:</label>
+            <input class="form-control" name="password" type="password" id="password" ngModel required>
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
-            <div class="labels">Password:</div>
-            <input class="form-control" name="password" type="password" id="password" ng-model="user.password" ng-minlength="6">
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-4 col-xs-offset-4">
-            <div class="labels">Repeat Password:</div>
-            <input type="password" id="passwordRepeat" class="form-control" ng-model="passwordRepeat">
+            <label for="passwordRepeat">Password Repeat:</label>
+            <input type="password" id="passwordRepeat" class="form-control" name="passwordRepeat" validateEqual="password" [(ngModel)]="passwordRepeat" required>
           </div>
         </div>
         <br>
@@ -59,7 +52,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 text-center">
-        <button ng-click='signup(user)' class='btn btn-primary'>Submit</button>
+        <button type="submit" class='btn btn-primary'>Submit</button>
       </div>
     </div>
   </form>

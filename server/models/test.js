@@ -6,7 +6,12 @@ const testSchema = new Schema({
   objectType: String,
   objectName: String,
   isAdmin: Boolean,
-  objectDescription: String
+  objectDescription: String,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  }
 
 });
 
