@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-new-deal',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-deal.component.css']
 })
 export class NewDealComponent implements OnInit {
+  user: any;
+  sfId: string;
+  onLoadIframe = false;
 
-  constructor() { }
+
+  constructor(public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.user = JSON.parse(sessionStorage.getItem('userInfo'));
+    this.sfId = this.user.salesforceId;
+
+    setTimeout(()=> {
+      this.onLoadIframe = true;
+    },2000)
   }
+
+
 
 }

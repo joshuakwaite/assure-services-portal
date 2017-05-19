@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
 
   passwordMessage;
   passwordRepeat;
+  errorMessage: string;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -27,23 +28,17 @@ export class SignupComponent implements OnInit {
       this.passwordMessage = "Passwords do not match!"
     } else {
       this.authService.signup(form.value)
-      //   .then(function(response){
-      //   console.log(response);
-      //   this.router.path('/')
-      // }, function(response){
-      //   alert("There was a problem: " + response.data)
-      // })
         .subscribe(
           (response: Response) => {
-            const data = response.json();
+            // const data = response.json();
             this.router.navigateByUrl('/login');
-            console.log(data)
           },
-          (error) => console.log(error)
+          (error) => {
+            this.errorMessage = error._body;
+            console.log(error)
+          }
         );
     }
-
-    console.log(form.value)
   }
 
 

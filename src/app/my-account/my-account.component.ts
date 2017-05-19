@@ -1,17 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.css'],
-  providers: [AuthService]
+  providers: []
 })
-export class MyAccountComponent implements OnInit {
+export class AccountComponent implements OnInit {
+  user: any;
+  firstName: string;
+  lastName: string;
+  email: string;
 
-  constructor(private authService: AuthService) { }
+
+
+  constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(sessionStorage.getItem('userInfo'));
+
+    this.firstName = this.user.firstName;
+    this.lastName = this.user.lastName;
+    this.email = this.user.email;
   }
 
+
 }
+

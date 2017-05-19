@@ -1,14 +1,29 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from "@angular/http";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class AuthService {
 
-  userInfo = {};
 
   constructor(private http: Http, private router: Router) {
   }
+
+
+
+  // getUserInfo = function () {
+  //   console.log(this.userInfo);
+  //   return this.userInfo;
+  // };
+
+  // setUserData = function (info) {
+  //   // console.log(info);
+  //   // this.userInfo.firstName = info.firstName;
+  //   // this.userInfo.lastName = info.lastName;
+  //   // this.userInfo.email = info.email;
+  //   // console.log(this.userInfo)
+  // };
 
   setToken = function (token: any) {
     sessionStorage.setItem('userToken', token)
@@ -20,22 +35,13 @@ export class AuthService {
 
   removeToken = function () {
     sessionStorage.removeItem('userToken');
+    sessionStorage.removeItem('userInfo');
   };
 
 
   login = function (user: any) {
     return this.http.post('auth/login', user)
-      .subscribe(
-        (response: Response) => {
-          const data = response.json();
-          this.setToken(data.token);
-          console.log(data);
-          this.userInfo = data.user;
-          this.router.navigateByUrl('my-account');
-          return data
-        },
-        (error) => console.log(error)
-      );
+
   };
 
   logout = function () {
@@ -51,6 +57,13 @@ export class AuthService {
     return this.http.post('/auth/signup', user)
   };
 
+
+
+
 }
 
-
+ export class UserInfo {
+  firstName: string;
+  lastName: string;
+  email: string;
+}

@@ -4,6 +4,7 @@
   </div>
 
   <p class="signup text-center" style="padding-bottom: 10px;">Use the form below to login to your Assure Services account:</p>
+  <p class="signup text-center" style="padding-bottom: 10px;"><a routerLink="/signup" routerLinkActive="active">Need an account?</a></p>
 
   <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
     <div class="form-group">
@@ -24,7 +25,7 @@
         <br>
         <div class="row">
           <div class="col-xs-12 text-center">
-            <span class="text-danger" ng-show="passwordMessage">{{passwordMessage}}</span>
+            <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}</span>
           </div>
         </div>
     </div>
@@ -33,12 +34,5 @@
         <button type="submit" class='btn btn-primary'>Login</button>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-xs-12 text-center">
-        <button type="button" (click)='doStuff()' class='btn btn-primary'>Login</button>
-      </div>
-    </div>
-
   </form>
 </div>

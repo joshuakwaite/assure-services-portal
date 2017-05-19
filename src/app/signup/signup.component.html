@@ -45,7 +45,8 @@
         <br>
         <div class="row">
           <div class="col-xs-12 text-center">
-            <span class="text-danger" ng-show="passwordMessage">{{passwordMessage}}</span>
+            <span class="text-danger" *ngIf="passwordMessage">{{passwordMessage}}</span>
+            <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}</span>
           </div>
         </div>
       </div>
