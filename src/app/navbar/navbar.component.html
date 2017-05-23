@@ -28,8 +28,8 @@
             <li *ngIf="authService.isAuthenticated()"><a routerLink="/my-account" routerLinkActive="active">Account</a></li>
             <a *ngIf="authService.isAuthenticated()" class="navbar-brand " href="#">
               <img class='navbar-brand custom-brand' *ngIf="!onPictureError" [src]='sanitizer.bypassSecurityTrustResourceUrl("http://assure.force.com/newspv/resource/1480802952000/logo_" + sfId)' (error)="picError()" alt="Assure Services">
-              <input type="text" id="test" [(ngModel)]="user.firstName">
-              {{user.firstName}}
+              <!--<input type="text" id="test" [(ngModel)]="first">-->
+              <!--{{first}}-->
             </a>
           </ul>
         </div>

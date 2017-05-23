@@ -11,14 +11,14 @@
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
             <div class="labels">Email Address:</div>
-            <input class="form-control" name="email" type="email" id="email" ngModel required>
+            <input class="form-control" name="email" type="email" id="email" ngDefaultControl="email" [(ngModel)]="userEmail">
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-xs-4 col-xs-offset-4">
             <div class="labels">Password:</div>
-            <input class="form-control" name="password" type="password" id="password" ngModel required>
+            <input class="form-control" name="password" type="password" id="password" ngDefaultControl="password" [(ngModel)]="userPassword">
           </div>
         </div>
         <br>
@@ -31,7 +31,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 text-center">
-        <button type="submit" class='btn btn-primary'>Login</button>
+        <button type="submit" class='btn btn-primary' id="loginSubmit">Login</button>
       </div>
     </div>
   </form>

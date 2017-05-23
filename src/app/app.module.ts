@@ -31,8 +31,8 @@ const appRoutes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'blue-skies', component: BlueSkiesCalculatorComponent },
   { path: 'my-account', component: AccountComponent, canActivate: [AuthGuard]  },
-  { path: '', redirectTo: '/new-deal', pathMatch: 'full'},
-  { path: '*/path', redirectTo: '/new-deal', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '*/path', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

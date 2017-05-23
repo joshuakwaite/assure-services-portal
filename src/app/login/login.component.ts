@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
 import {Response} from "@angular/http";
-import {UserInfoService} from "../user-info.service";
 
 @Component({
   selector: 'app-login',
@@ -13,13 +12,14 @@ import {UserInfoService} from "../user-info.service";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router, private userInfoService: UserInfoService) { }
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   errorMessage: string;
 
   ngOnInit() {
     if(this.authService.isAuthenticated()) {
-      this.router.navigateByUrl('dashboard');
+      this.router.navigateByUrl('blue-skies');
     }
   }
 
@@ -32,9 +32,8 @@ export class LoginComponent implements OnInit {
         (response: Response) => {
           const data = response.json();
           this.authService.setToken(data.token);
-          // this.userInfoService.change(data.user);
           sessionStorage.setItem('userInfo', JSON.stringify(data.user));
-          this.router.navigateByUrl('*/path');
+          this.router.navigateByUrl('blue-skies');
         },
         (error) => this.errorMessage = error._body
       );
@@ -43,4 +42,12 @@ export class LoginComponent implements OnInit {
   }
 
 
-}
+  testFunction(event) {
+    console.log(event)
+  }
+
+  ngOnChanges () {
+
+  }
+
+  }
