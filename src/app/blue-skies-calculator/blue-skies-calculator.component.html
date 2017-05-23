@@ -33,16 +33,19 @@
       <span class="help-block text-center" *ngIf="!calculateForm.valid && isNotValid">Please fill out each data field!</span>
 
       <div formArrayName="stateGroups">
-        <div class="form-group row" *ngFor="let stateControls of calculateForm.get('stateGroups').controls; let i = index;" [formGroupName]="i">
+        <div class="form-group group row" *ngFor="let stateControls of calculateForm.get('stateGroups').controls; let i = index;" [formGroupName]="i">
           <div class="col-sm-3 nopadding">
             <div class="form-group">
               <select name="state" class="" id='select' formControlName="stateCode" ngModel >
-                <!--<option class="choose" value="" disabled>Choose a state</option>-->
+
+                <!--<option class="" value="select" disabled>Choose a state</option>-->
                 <option *ngFor="let state of states" [ngValue]="state.abbreviation">
                   {{ state.name }}
                 </option>
               </select>
-              <label class="control-label" for="select">Choose a State</label><i class="bar"></i>
+              <label class="control-label" for="select">Choose a State</label>
+              <i class="bar"></i>
+
 
               <!--<span class="help-block text-center" *ngIf="!calculateForm.valid && isNotValid">This is required!</span>-->
 

@@ -3,32 +3,36 @@
     <h1>Assure Portal Login</h1>
   </div>
 
-  <p class="signup text-center" style="padding-bottom: 10px;">Use the form below to login to your Assure Services account:</p>
-  <p class="signup text-center" style="padding-bottom: 10px;"><a routerLink="/signup" routerLinkActive="active">Need an account?</a></p>
+  <p class="signup text-center" style="padding-bottom: 10px;">Use the form below to login to your Assure Services
+    account:</p>
+  <p class="signup text-center" style="padding-bottom: 10px;"><a routerLink="/signup" routerLinkActive="active">Need an
+    account?</a></p>
 
   <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
-    <div class="form-group">
-        <div class="row">
-          <div class="col-xs-4 col-xs-offset-4">
-            <div class="labels">Email Address:</div>
-            <input class="form-control" name="email" type="email" id="email" ngDefaultControl="email" [(ngModel)]="userEmail">
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+          <div class="form-group group">
+            <input class="" name="email" type="text" id="email" ngDefaultControl="email" ngModel required>
+            <label class="control-label" for="email">Email Address</label><i class="bar"></i>
           </div>
         </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-4 col-xs-offset-4">
-            <div class="labels">Password:</div>
-            <input class="form-control" name="password" type="password" id="password" ngDefaultControl="password" [(ngModel)]="userPassword">
+      </div>
+
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+          <div class="form-group group">
+            <input class="" name="password" type="password" id="password" ngDefaultControl="password" ngModel required>
+            <label class="control-label" for="password">Password</label><i class="bar"></i>
           </div>
         </div>
-        <br>
-        <br>
-        <div class="row">
-          <div class="col-xs-12 text-center">
-            <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}</span>
-          </div>
+      </div>
+
+      <br>
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}</span>
         </div>
-    </div>
+      </div>
     <div class="row">
       <div class="col-xs-12 text-center">
         <button type="submit" class='btn btn-primary' id="loginSubmit">Login</button>
