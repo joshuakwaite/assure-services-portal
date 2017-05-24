@@ -14,7 +14,6 @@ export class SignupComponent implements OnInit {
 
   passwordMessage;
   passwordRepeat;
-  errorMessage: string;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -34,7 +33,7 @@ export class SignupComponent implements OnInit {
             this.router.navigateByUrl('/login');
           },
           (error) => {
-            this.errorMessage = error._body;
+            this.passwordMessage = error._body;
             console.log(error)
           }
         );

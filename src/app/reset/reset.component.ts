@@ -14,6 +14,7 @@ export class ResetComponent implements OnInit {
   password;
   passwordRepeat;
   resetToken;
+  errorMessage;
 
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -23,7 +24,6 @@ export class ResetComponent implements OnInit {
 
   submitReset(form: NgForm){
     if (form.value.newPassword === form.value.newPasswordRepeat) {
-      console.log("working up to this point!", form.value.newPassword, this.resetToken);
       this.authService.resetForgottenPassword(form.value.newPassword, this.resetToken)
         .subscribe(
           (response: Response) => {
@@ -33,6 +33,8 @@ export class ResetComponent implements OnInit {
           },
           (error) => console.log(error)
         );
+    } else {
+      this.errorMessage = "Passwords do not match!"
     }
   }
 
