@@ -51,12 +51,13 @@
 
             </div>
           </div>
-          <div class="col-sm-2 nopadding center-radio">
-            <div class="input-group">
+          <div class="col-sm-2 nopadding form-radio center-radio">
+            <div class="input-group radio">
               <span style="padding-right: 4px;">506</span>
-              <div class="form-group radio" *ngFor="let regD of regDs" style="margin-top: 4px; padding-right: 4px; padding-left: 4px;">
+              <div class="radio" *ngFor="let regD of regDs" style="margin-top: 4px; padding-right: 4px; padding-left: 4px;">
                 <label>
                   <input type="radio" [value]="regD" formControlName="regD">
+                  <i class="helper"></i>
                   ({{regD}})
                 </label>
 

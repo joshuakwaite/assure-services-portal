@@ -57,7 +57,18 @@ export class AuthService {
     return this.http.post('/auth/signup', user)
   };
 
+  changePassword = function (newPasswords) {
+    return this.http.post("/account-info/change-password",{newPassword: newPasswords.newPassword})
+  }
 
+  forgotPassword = function (email) {
+    console.log("Sending email to " + email);
+    return this.http.post("/auth/forgot-password", {email: email})
+  }
+
+  resetForgottenPassword = function (password, resetToken) {
+    return this.http.post("/auth/reset/" + resetToken, {password: password})
+  }
 
 
 }

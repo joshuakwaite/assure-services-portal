@@ -20,7 +20,9 @@ import { httpFactory } from './http.factory';
 import { AuthGuard } from "./auth-guard.service";
 import { BlueSkiesCalculatorComponent } from './blue-skies-calculator/blue-skies-calculator.component';
 import { CalculateService } from "./blue-skies-http.service";
-import { UserInfoService } from "./user-info.service"
+import { UserInfoService } from "./user-info.service";
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetComponent } from './reset/reset.component'
 
 
 const appRoutes: Routes = [
@@ -29,8 +31,10 @@ const appRoutes: Routes = [
   { path: 'new-deal', component: NewDealComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'blue-skies', component: BlueSkiesCalculatorComponent },
+  { path: 'blue-skies', component: BlueSkiesCalculatorComponent, canActivate: [AuthGuard] },
   { path: 'my-account', component: AccountComponent, canActivate: [AuthGuard]  },
+  { path: 'forgot-password', component: ForgotPasswordComponent  },
+  { path: 'reset/:resetToken', component: ResetComponent  },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '*/path', redirectTo: '/login', pathMatch: 'full' }
 ];
@@ -46,7 +50,9 @@ const appRoutes: Routes = [
     LoginComponent,
     SignupComponent,
     AccountComponent,
-    BlueSkiesCalculatorComponent
+    BlueSkiesCalculatorComponent,
+    ForgotPasswordComponent,
+    ResetComponent
 
   ],
   imports: [

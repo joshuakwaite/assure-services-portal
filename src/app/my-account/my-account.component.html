@@ -1,5 +1,43 @@
-<p>
-  my-account works!
-</p>
-<h1>{{firstName}} {{lastName}}</h1>
-<h2>{{email}}</h2>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1 class="text-center">{{ firstName }} {{ lastName }}</h1>
+    <br>
+  <img class='center-block' *ngIf="!onPictureError" [src]='sanitizer.bypassSecurityTrustResourceUrl("http://assure.force.com/newspv/resource/1480802952000/logo_" + sfId)' (error)="picError()" alt="Assure Services">
+    <br>
+
+    <h2>{{email}}</h2>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Change Password</h3>
+
+        <div class="text-danger" *ngIf="passwordMessage">{{passwordMessage}}</div>
+
+
+        <form (submit)="onChange(changePw)" #changePw="ngForm">
+          <br>
+
+          <div class="form-group group">
+            <input type="password" id="newPassword" name="newPassword" class="" ngModel required>
+            <label class="control-label" for="newPassword">New Password</label><i class="bar"></i>
+          </div>
+
+          <br>
+
+          <div class="form-group group">
+            <input type="password" id="newPasswordRepeat" name="newPasswordRepeat" class="" ngModel required>
+            <label class="control-label" for="newPasswordRepeat">Repeat New Password</label><i class="bar"></i>
+          </div>
+
+          <br>
+
+
+          <button class="btn btn-primary" type="submit">Change Password</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

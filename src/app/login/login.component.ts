@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
           const data = response.json();
           this.authService.setToken(data.token);
           sessionStorage.setItem('userInfo', JSON.stringify(data.user));
-          this.router.navigateByUrl('blue-skies');
+          this.router.navigateByUrl('my-account');
         },
         (error) => this.errorMessage = error._body
       );

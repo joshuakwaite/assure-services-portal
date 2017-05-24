@@ -25,6 +25,10 @@ app.use('/api/test', api);
 //use auth routes for authentication
 app.use("/auth", require("./server/routes/auth.routes.js"));
 
+//Routes for password reset
+app.use("/account-info", expressJwt({secret: config.secret}));
+app.use("/account-info", require("./server/routes/user-info.routes.js"));
+
 // Catches other routes and sends to index
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));

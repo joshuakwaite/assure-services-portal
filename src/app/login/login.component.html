@@ -9,30 +9,35 @@
     account?</a></p>
 
   <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
-      <div class="row">
-        <div class="col-xs-4 col-xs-offset-4">
-          <div class="form-group group">
-            <input class="" name="email" type="text" id="email" ngDefaultControl="email" ngModel required>
-            <label class="control-label" for="email">Email Address</label><i class="bar"></i>
-          </div>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group group">
+          <input class="" name="email" type="text" id="email" ngDefaultControl="email" ngModel required>
+          <label class="control-label" for="email">Email Address</label><i class="bar"></i>
         </div>
       </div>
+    </div>
 
-      <div class="row">
-        <div class="col-xs-4 col-xs-offset-4">
-          <div class="form-group group">
-            <input class="" name="password" type="password" id="password" ngDefaultControl="password" ngModel required>
-            <label class="control-label" for="password">Password</label><i class="bar"></i>
-          </div>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-group group">
+          <input class="" name="password" type="password" id="password" ngDefaultControl="password" ngModel required>
+          <label class="control-label" for="password">Password</label><i class="bar"></i>
         </div>
       </div>
+    </div>
 
-      <br>
-      <div class="row">
-        <div class="col-xs-12 text-center">
-          <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}</span>
-        </div>
+    <p class="text-center"><a routerLink="/forgot-password" routerLinkActive="active">Forgot password?</a></p>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+
+        <div class="text-danger" *ngIf="errorMessage" style="margin-bottom: 25px;">{{errorMessage}}</div>
+
+
       </div>
+    </div>
     <div class="row">
       <div class="col-xs-12 text-center">
         <button type="submit" class='btn btn-primary' id="loginSubmit">Login</button>
